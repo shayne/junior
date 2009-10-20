@@ -2,9 +2,6 @@
 
 Junior was inspired by Ruby's Sinatra in an attempt "for quicky creating web-applications in [ColdFusion] with minimal effort":
 
-Sinatra is a DSL for quickly creating web-applications in Ruby with minimal
-effort:
-
   # myapp.cfm
   <cfimport taglib="junior/tags" prefix="jr" />
   <jr:get url="/">

@@ -6,7 +6,6 @@
 	<cfset var tag_name = rematch("CF_[^,]+", getbasetaglist())[1] />
 	<cfset tag_name = right(tag_name, len(tag_name)-3) />
 	<cfset tag_name = iif(refindnocase("get|put|post|delete", tag_name), "'method'", "tag_name") />
-	<cflog text="#tag_name# => #thistag.executionMode#" />
 	<cfset request.url = iif(len(cgi.path_info), "cgi.path_info", "'/'") />
 	<cfset request.method = iif(structkeyexists(form, "_method"), "form._method", "cgi.request_method") />
 	<cfinvoke method="#tag_name#_tag" />
