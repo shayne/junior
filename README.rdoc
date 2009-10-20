@@ -1,0 +1,37 @@
+= Junior 
+
+Junior was inspired by Ruby's Sinatra in an attempt "for quicky creating web-applications in [ColdFusion] with minimal effort":
+
+Sinatra is a DSL for quickly creating web-applications in Ruby with minimal
+effort:
+
+  # myapp.cfm
+  <cfimport taglib="junior/tags" prefix="jr" />
+  <jr:get url="/">
+    Hello, world!
+  </jr:get>
+
+== Routes
+
+In Junior, a route is a custom tag named after an HTTP method with a URL attribute used as a matching pattern.
+
+  <jr:get url="/">
+    .. show something ..
+  </jr:get>
+  
+  <jr:post url="/">
+    .. create something ..
+  </jr:post>
+  
+  <jr:put url="/">
+    .. update something ..
+  </jr:put>
+  
+  <jr:delete url="/">
+    .. annihilate something ..
+  </jr:delete>
+
+Routes are matched in the order they are defined. The first route that
+matches the request is invoked.
+
+__MORE TO COME__
