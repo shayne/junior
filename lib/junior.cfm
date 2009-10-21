@@ -29,13 +29,23 @@
 <cffunction name="cfm_tag">
 	<cfcontent reset="true" />
 	<cfset structappend(variables, caller, true) />
-	<cfif fileexists(expandpath("/views/layout.cfm"))>
-		<cfinclude template="/views/layout.cfm" />
+	<cfif fileexists(expandpath(view_path() & "layout.cfm"))>
+		<cfset include_view("layout") />
 	<cfelse>
-		<cfinclude template="/views/#attributes.view#.cfm" />
+		<cfset yield() />
 	</cfif>
 </cffunction>
 
 <cffunction name="yield">
-	<cfinclude template="/views/#attributes.view#.cfm" />
+	<cfset include_view(attributes.view) />
+</cffunction>
+
+<cffunction name="include_view">
+	<cfinclude template="#view_path() & arguments.1#.cfm" />
+</cffunction>
+
+<cffunction name="view_path">
+	<cfset var view_path = repeatstring("../", listlen(getcurrenttemplatepath(), "/")+1) />
+	<cfset view_path &= replace(getdirectoryfrompath(getbasetemplatepath()), "/", "") & "../views/" />
+	<cfreturn view_path />
 </cffunction>
